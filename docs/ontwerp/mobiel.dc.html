@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Sitau5D – mobiel</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#2A1B45}
+a{color:#17121F}a:hover{color:#844599}
+.ruit{background-color:#F6F3EE;background-image:linear-gradient(rgba(23,18,31,0.10) 1px,transparent 1px),linear-gradient(90deg,rgba(23,18,31,0.10) 1px,transparent 1px);background-size:22px 22px}
+.korrel{background-image:url(../assets/img/korrel.webp);background-size:256px 256px;mix-blend-mode:multiply;pointer-events:none}
+.spinband{background-color:#2B2233;background-image:url(../assets/img/zentuin-band.webp);background-size:cover;background-position:center}
+.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.laag{will-change:transform}
+html{scroll-behavior:smooth}
+[data-rv]{opacity:0;transform:translateY(48px)}
+[data-rv="in"]{opacity:1;transform:none;transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--rv-d,0s)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}[data-rv]{opacity:1;transform:none;transition:none}}
+input:focus,textarea:focus,button:focus-visible,a:focus-visible{outline:3px solid #844599;outline-offset:2px}
+.m-knop{display:none}
+@container site (max-width: 760px){
+.m-knop{display:inline-flex!important}
+.m-nav{row-gap:0!important}
+.m-menu{order:3;width:100%;margin-top:0;flex-direction:column!important;flex-wrap:nowrap!important;align-items:stretch!important;gap:0!important;max-height:0;opacity:0;visibility:hidden;overflow:hidden;border-top:0 solid #17121F;transition:max-height .45s cubic-bezier(.2,.7,.2,1),margin-top .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease,border-top-width .2s ease,visibility 0s linear .45s}
+.m-menu.open{margin-top:12px;max-height:420px;opacity:1;visibility:visible;border-top-width:2px;transition:max-height .45s cubic-bezier(.2,.7,.2,1),margin-top .45s cubic-bezier(.2,.7,.2,1),opacity .2s ease,border-top-width .1s ease,visibility 0s}
+.m-menu > a{border-bottom:1px solid #17121F;padding:0;min-height:40px!important;opacity:0;transform:translateY(-10px);transition:opacity .25s ease,transform .35s cubic-bezier(.2,.7,.2,1)}
+.m-menu > a:last-child{border-bottom:0;margin:10px 0 6px;padding:0 18px;justify-content:center}
+.m-menu.open > a{opacity:1;transform:none}
+.m-menu.open > a:nth-child(2){transition-delay:.05s}.m-menu.open > a:nth-child(3){transition-delay:.1s}.m-menu.open > a:nth-child(4){transition-delay:.15s}.m-menu.open > a:nth-child(5){transition-delay:.2s}
+@media (prefers-reduced-motion: reduce){.m-menu,.m-menu > a{transition:none!important}}
+.m-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;column-gap:16px!important}
+.m-grid > *{grid-column:1 / -1!important;grid-row:auto!important}
+.m-poster{order:3;min-height:480px!important;margin-top:8px!important}
+.m-h1{margin-top:0!important;font-size:80px!important}
+.m-michel{left:8%!important;width:92%!important}
+.m-voet{grid-template-columns:minmax(0,1fr)!important;gap:6px!important}
+.m-over{row-gap:20px!important}
+.m-ww > [data-t^="w."]{transform:none!important}
+.m-ww > h2{margin-top:20px!important}
+.m-hide{display:none!important}
+.m-tabel{min-width:0!important}
+.m-scroll{overflow:visible!important}
+[data-t="v.st2"]{display:none!important}
+[data-t="v.di"]{left:auto!important;right:8px!important;top:56px!important;width:72px!important}
+[data-t="v.di"] > div{width:34px!important;height:34px!important;right:-17px!important;bottom:-17px!important}
+.rolk{margin-left:0!important}
+.klantk{padding-right:0!important}
+.m-rij{grid-template-columns:minmax(0,1fr)!important;gap:2px!important;padding-left:0!important;padding-right:0!important}
+.m-rij > *{grid-column:1 / -1!important}
+.m-ww > *{top:0!important;justify-self:start!important;max-width:100%!important}
+.m-ww > h2{margin-top:16px!important}
+.m-ww > p{margin:12px 0 40px!important}
+.m-ww > p:last-child{margin-bottom:0!important}
+.m-wwpad{padding-bottom:64px!important}
+.m-ww > [data-t^="w."]{grid-column:1 / -1!important;max-width:none!important}
+.m-contact{row-gap:28px!important}
+#citaat > .m-grid{padding-top:80px!important;padding-bottom:80px!important}
+[data-t="v.co2"],[data-t="w.ster"],.m-weg{display:none!important}
+.m-grid.m-dienst{grid-template-columns:28px minmax(0,1fr)!important}
+.m-grid.m-dienst > *{grid-column:2 / -1!important;min-width:0!important}
+.m-grid.m-dienst > :first-child{grid-column:1 / 2!important;grid-row:1 / 3!important}
+.m-grid > figure{padding:24px!important}
+.m-form{padding:24px!important}
+}
+</style>
+</helmet>
+<div data-root style="container: site / inline-size; max-width: 390px; margin: 0 auto; font-family: Archivo, 'Helvetica Neue', Arial, sans-serif; color: #17121F; background: #EFEAE1; font-size: 17px; line-height: 1.55; overflow-x: hidden">
+
+<!-- KOPBALK -->
+<header style="border-bottom: 2px solid #17121F; background: #EFEAE1">
+<nav class="m-nav" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px">
+<a href="#top" style="display: flex; align-items: center; min-height: 44px"><img src="../assets/img/logo.png" alt="Sitau5D" style="height: 34px; width: auto; display: block; mix-blend-mode: multiply"></a>
+<div id="menu" class="mono m-menu {{menuCls}}" style="display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase">
+<a href="#diensten" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">01 Diensten</a>
+<a href="#werk" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">02 Werk</a>
+<a href="#werkwijze" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">03 Werkwijze</a>
+<a href="#over" style="text-decoration: none; min-height: 44px; display: inline-flex; align-items: center">04 Over</a>
+<a href="#contact" style="text-decoration: none; background: #17121F; color: #EFEAE1; padding: 0 18px; min-height: 44px; display: inline-flex; align-items: center">Contact →</a>
+</div>
+<button type="button" class="m-knop mono" onClick="{{toggleMenu}}" aria-controls="menu" aria-expanded="{{menuExpanded}}" style="align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; background: #17121F; color: #EFEAE1; border: 0; border-radius: 0; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer">{{menuLabel}}<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}"><svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2 1 L16 13 M16 1 L2 13" stroke="#EFEAE1" stroke-width="2" fill="none"></path></svg></sc-if><sc-if value="{{menuClosed}}" hint-placeholder-val="{{ true }}"><svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 2 H18 M0 7 H18 M0 12 H18" stroke="#EFEAE1" stroke-width="2" fill="none"></path></svg></sc-if></button>
+</nav>
+</header>
+
+<!-- HERO: POSTER MET GEOMETRIE -->
+<section id="top" style="position: relative; overflow: hidden">
+<div class="m-grid" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; position: relative">
+
+<div class="m-poster" style="grid-column: 6 / 13; grid-row: 2 / 5; position: relative; min-height: 700px; margin-top: 48px">
+<div style="position: absolute; left: 10%; right: 0; top: -40px; bottom: 0; background: #E4DAF2"></div>
+<div class="laag" data-t="g.punten" style="position: absolute; left: 0; top: 34%; width: 42%; height: 30%; background-image: radial-gradient(#5B2D91 1.7px, transparent 2px); background-size: 16px 16px; transform: {{g.punten}}"></div>
+<div class="laag" data-t="g.zon" style="position: absolute; right: 4%; top: 5%; width: 36%; aspect-ratio: 1 / 1; border-radius: 50%; background: {{accent}}; transform: {{g.zon}}"></div>
+<div class="laag" data-t="g.ring" style="position: absolute; right: 30%; top: 30%; width: 13%; aspect-ratio: 1 / 1; border-radius: 50%; border: 2px solid #17121F; box-sizing: border-box; transform: {{g.ring}}"></div>
+<div style="position: absolute; left: 10%; right: 0; bottom: 0; height: 30%; background: #2A1B45"></div>
+<div class="laag" data-t="g.half" style="position: absolute; right: 9%; bottom: 30%; width: 17%; aspect-ratio: 1 / 1; background: #C9B3EA; transform: {{g.half}}"></div>
+<div class="laag" data-t="g.vk" style="position: absolute; right: 3%; bottom: 44%; width: 12%; aspect-ratio: 1 / 1; background: #844599; mix-blend-mode: multiply; transform: {{g.vk}}"></div>
+<div class="laag" data-t="g.blok" style="position: absolute; left: 16%; bottom: 30%; width: 22%; height: 9%; background: #5B2D91; transform: {{g.blok}}"></div>
+<div class="laag" data-t="g.lijn" style="position: absolute; left: 78%; top: 0; width: 2px; height: 112%; background: #17121F; transform-origin: 50% 0; transform: {{g.lijn}}"></div>
+<div style="position: absolute; inset: -20% 0 0 0; overflow: hidden; pointer-events: none">
+<img class="laag m-michel" src="../assets/img/prive/portret-hero.webp" alt="Michel Arents, oprichter van Sitau5D" data-t="g.michel" style="position: absolute; left: 34%; bottom: -42%; width: 64%; height: auto; transform: {{g.michel}}">
+</div>
+<div class="laag" aria-hidden="true" data-t="g.ster1" style="position: absolute; left: 42%; top: 9%; width: 30px; height: 26px; background: #5B2D91; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: {{g.ster1}}"></div>
+<div class="laag" aria-hidden="true" data-t="g.ster2" style="position: absolute; right: 10%; top: 50%; width: 16px; height: 13px; background: #17121F; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: {{g.ster2}}"></div>
+<div class="laag" aria-hidden="true" data-t="g.ster2" style="position: absolute; left: 18%; bottom: 12%; width: 19px; height: 16px; background: #E4DAF2; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: {{g.ster2}}"></div>
+<div class="korrel" style="position: absolute; inset: 0"></div>
+<p class="mono" style="position: absolute; left: 12%; bottom: 14px; margin: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #E4DAF2">Fig. 1 — Michel Arents, oprichter</p>
+</div>
+
+<h1 class="m-h1" style="grid-column: 1 / 11; grid-row: 2; position: relative; z-index: 2; margin: 96px 0 0; font-weight: 900; font-stretch: 78%; font-size: clamp(64px, 9.4cqw, 140px); line-height: 0.86; letter-spacing: -0.02em; text-transform: uppercase">Van finance<br>naar <span style="background: {{accent}}; color: #FFFFFF; padding: 0 0.08em">data.</span></h1>
+<div style="grid-column: 1 / 6; grid-row: 3; position: relative; z-index: 2; display: flex; flex-direction: column; gap: 28px; padding: 40px 0 64px">
+<p style="margin: 0; font-size: 20px; line-height: 1.45; max-width: 460px">Sitau5D brengt data, processen en systemen op orde. Met een stevige basis in finance en meer dan 15 jaar ervaring in data engineering, BI en AI.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 2px solid #17121F">
+<div style="padding: 14px 16px 14px 0; border-right: 1px solid #17121F">
+<p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Inzet</p>
+<p style="margin: 4px 0 0; font-weight: 800; font-size: 22px">Interim &amp; projecten</p>
+</div>
+<div style="padding: 14px 0 14px 16px">
+<p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Werkplek</p>
+<p style="margin: 4px 0 0; font-weight: 800; font-size: 22px">Op locatie of remote</p>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#contact" style="background: {{accent}}; color: #FFFFFF; text-decoration: none; font-weight: 700; padding: 0 26px; min-height: 52px; display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: 0.03em">Plan een kennismaking</a>
+<a href="#werk" style="border: 2px solid #17121F; text-decoration: none; font-weight: 700; padding: 0 24px; min-height: 52px; box-sizing: border-box; display: inline-flex; align-items: center; text-transform: uppercase; letter-spacing: 0.03em">Bekijk werk</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATEMENT -->
+<section id="statement" style="background: {{accent}}; color: #FFFFFF; position: relative; overflow: hidden">
+<div class="laag" data-t="v.st" style="position: absolute; right: -90px; top: -120px; width: 360px; aspect-ratio: 1 / 1; border-radius: 50%; background: #5B2D91; transform: {{v.st}}"></div>
+<div class="laag" data-t="v.st2" style="position: absolute; right: 220px; top: 70px; width: 90px; aspect-ratio: 1 / 1; border-radius: 50%; border: 2px solid #E4DAF2; box-sizing: border-box; transform: {{v.st2}}"></div>
+<div style="position: absolute; left: 0; right: 0; bottom: 0; height: 10px; background: #2A1B45"></div>
+<div class="korrel" style="position: absolute; inset: 0; opacity: 0.6"></div>
+<div class="m-grid" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 72px 24px 100px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; align-items: stretch">
+<p style="margin: 0 0 20px; grid-column: 1 / -1; font-weight: 800; font-stretch: 85%; font-size: clamp(30px, 3.6cqw, 50px); line-height: 1.08; text-transform: uppercase; max-width: 1000px">Ik spreek de taal van de controller én van de engineer.</p>
+<div style="grid-column: span 4; border-top: 2px solid #FFFFFF; padding-top: 10px"><p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Ervaring</p><p style="margin: 2px 0 0; font-weight: 800; font-size: 34px; line-height: 1.15">15+ jaar data</p></div>
+<div style="grid-column: span 4; border-top: 2px solid #FFFFFF; padding-top: 10px"><p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Basis</p><p style="margin: 2px 0 0; font-weight: 800; font-size: 34px; line-height: 1.15">Finance</p></div>
+<div style="grid-column: span 4; border-top: 2px solid #FFFFFF; padding-top: 10px"><p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Methode</p><p style="margin: 2px 0 0; font-weight: 800; font-size: 34px; line-height: 1.15">Lean &amp; Scrum</p></div>
+</div>
+</section>
+
+<!-- DIENSTEN -->
+<section id="diensten" style="position: relative; overflow: hidden">
+<div class="laag" aria-hidden="true" data-t="v.di" style="position: absolute; left: -30px; top: 60px; width: 120px; aspect-ratio: 1 / 1; background: #E4DAF2; transform: {{v.di}}"><div class="laag" data-t="v.di3" style="position: absolute; right: -28px; bottom: -28px; width: 56px; height: 56px; background: #C9A6DB; transform: {{v.di3}}"></div></div>
+<div class="laag m-weg" aria-hidden="true" data-t="v.di2" style="position: absolute; right: 2%; top: 46%; width: 180px; height: 120px; background-image: radial-gradient(#C9B3EA 1.7px, transparent 2px); background-size: 16px 16px; transform: {{v.di2}}"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid #17121F; padding-bottom: 12px">
+<h2 style="margin: 0; font-weight: 900; font-stretch: 78%; font-size: clamp(48px, 6cqw, 88px); line-height: 0.9; text-transform: uppercase">Diensten</h2>
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em">01 / Wat ik doe</p>
+</div>
+<div data-rv-group style="display: flex; flex-direction: column">
+<article class="m-grid m-dienst" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px 24px; padding: 28px 0; border-bottom: 1px solid #17121F">
+<p class="mono" style="margin: 0; grid-column: span 1; font-size: 14px; color: {{accent}}; min-width: 32px">01</p>
+<h3 style="margin: 0; grid-column: span 5; min-width: 220px; font-weight: 800; font-size: 30px; line-height: 1.05; text-transform: uppercase">Data engineering &amp; modellering</h3>
+<p style="margin: 0; grid-column: span 6; min-width: 260px">Datamodellen, pipelines en datawarehouses in Azure, Databricks en SQL Server. Van ruwe bron tot betrouwbare gegevenslaag.</p>
+</article>
+<article class="m-grid m-dienst" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px 24px; padding: 28px 0; border-bottom: 1px solid #17121F">
+<p class="mono" style="margin: 0; grid-column: span 1; font-size: 14px; color: {{accent}}; min-width: 32px">02</p>
+<h3 style="margin: 0; grid-column: span 5; min-width: 220px; font-weight: 800; font-size: 30px; line-height: 1.05; text-transform: uppercase">AI &amp; data science</h3>
+<p style="margin: 0; grid-column: span 6; min-width: 260px">LLM-zoekoplossingen, RAG en knowledge graphs in Python. Praktisch toegepast op documenten, klantdata en regelgeving.</p>
+</article>
+<article class="m-grid m-dienst" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px 24px; padding: 28px 0; border-bottom: 1px solid #17121F">
+<p class="mono" style="margin: 0; grid-column: span 1; font-size: 14px; color: {{accent}}; min-width: 32px">03</p>
+<h3 style="margin: 0; grid-column: span 5; min-width: 220px; font-weight: 800; font-size: 30px; line-height: 1.05; text-transform: uppercase">BI &amp; rapportage</h3>
+<p style="margin: 0; grid-column: span 6; min-width: 260px">Stuur- en verantwoordingsinformatie, KPI-dashboards en datavisualisatie in Power BI, Business Objects en Tableau.</p>
+</article>
+<article class="m-grid m-dienst" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 8px 24px; padding: 28px 0; border-bottom: 1px solid #17121F">
+<p class="mono" style="margin: 0; grid-column: span 1; font-size: 14px; color: {{accent}}; min-width: 32px">04</p>
+<h3 style="margin: 0; grid-column: span 5; min-width: 220px; font-weight: 800; font-size: 30px; line-height: 1.05; text-transform: uppercase">Finance, processen &amp; systemen</h3>
+<p style="margin: 0; grid-column: span 6; min-width: 260px">ERP-implementaties (SAP, AFAS, Twinfield), procesverbetering met Lean en hands-on financiële administratie, van grootboek tot jaarrekening.</p>
+</article>
+</div>
+</div>
+</section>
+
+<!-- WERK -->
+<section id="werk" class="ruit" style="border-top: 2px solid #17121F; border-bottom: 2px solid #17121F">
+<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid #17121F; padding-bottom: 12px">
+<h2 style="margin: 0; font-weight: 900; font-stretch: 78%; font-size: clamp(48px, 6cqw, 88px); line-height: 0.9; text-transform: uppercase">Recent werk</h2>
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em">02 / Uitgelicht</p>
+</div>
+<div class="m-scroll" style="overflow-x: auto; overflow-y: hidden">
+<div data-rv-group class="m-tabel" style="min-width: 760px; display: flex; flex-direction: column; background: #EFEAE1; border-top: 2px solid #17121F; border-bottom: 2px solid #17121F">
+<div class="mono m-hide" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 12px 16px; color: #844599; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em"><span style="grid-column: span 2">Periode</span><span style="grid-column: span 3">Opdrachtgever</span><span class="rolk" style="grid-column: span 2; margin-left: -72px">Rol</span><span style="grid-column: span 5">Wat</span></div>
+<sc-for list="{{werk}}" as="r" hint-placeholder-count="6">
+<div class="m-rij" style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; padding: 18px 16px; border-top: 1px solid #17121F; align-items: baseline">
+<span class="mono" style="grid-column: span 2; font-size: 14px">{{r.jaar}}</span>
+<span class="klantk" style="grid-column: span 3; padding-right: 64px; font-weight: 800; font-size: 20px; text-transform: uppercase; line-height: 1.1">{{r.klant}}</span>
+<span class="rolk" style="grid-column: span 2; font-size: 15px; margin-left: -72px">{{r.rol}}</span>
+<span style="grid-column: span 5; font-size: 15px">{{r.wat}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WERKWIJZE: FOTOVLAKKEN -->
+<section id="werkwijze" style="position: relative; overflow: hidden">
+<div class="laag" aria-hidden="true" data-t="w.zon" style="position: absolute; right: 8%; top: 70px; width: 300px; aspect-ratio: 1 / 1; border-radius: 50%; background: #E4DAF2; transform: {{w.zon}}"></div>
+<div class="laag" aria-hidden="true" data-t="w.lijn" style="position: absolute; left: 46%; top: -160px; width: 1px; height: calc(120% + 240px); background: rgba(91,45,145,0.42); transform-origin: 50% 0; transform: {{w.lijn}}"></div>
+<div class="laag" aria-hidden="true" data-t="w.ster" style="position: absolute; left: 40%; top: 52%; width: 33px; height: 28px; background: #2A1B45; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: {{w.ster}}"></div>
+<div class="m-wwpad" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px 120px; position: relative">
+<p class="mono" style="margin: 0 0 24px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; border-top: 2px solid #17121F; padding-top: 10px">03 / Werkwijze</p>
+<div class="m-grid m-ww" style="position: relative; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 0">
+<div class="laag" data-t="w.a" style="grid-column: 8 / 13; grid-row: 1; justify-self: end; width: 100%; max-width: 380px; transform: {{w.a}}; z-index: 0">
+<img src="../assets/img/fuji.webp" alt="Mount Fuji met besneeuwde top" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1)">
+<p class="mono" style="margin: 6px 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em">Fig. 2 — Overzicht</p>
+</div>
+<h2 style="grid-column: 1 / 13; grid-row: 1; align-self: end; position: relative; top: -136px; z-index: 1; margin: 0; font-weight: 900; font-stretch: 75%; font-size: clamp(72px, 13cqw, 200px); line-height: 0.82; text-transform: uppercase">People</h2>
+<p style="grid-column: 1 / 6; grid-row: 2; margin: -126px 0 40px; position: relative; z-index: 1">Stakeholdermanagement en samenwerken in multidisciplinaire teams. Collega's meenemen in de verandering, van werkvloer tot directie.</p>
+<div class="laag" data-t="w.b" style="grid-column: 1 / 5; grid-row: 3 / 5; align-self: center; width: 100%; max-width: 380px; transform: {{w.b}}; z-index: 0">
+<img src="../assets/img/boomverzorger.webp" alt="Boomverzorger in een den" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 22%; filter: grayscale(1)">
+<p class="mono" style="margin: 6px 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em">Fig. 3 — Vakmanschap</p>
+</div>
+<h2 style="grid-column: 4 / 13; grid-row: 3; justify-self: end; align-self: end; position: relative; z-index: 1; margin: 0; font-weight: 900; font-stretch: 75%; font-size: clamp(72px, 13cqw, 200px); line-height: 0.82; text-transform: uppercase; color: {{accent}}">Process</h2>
+<p style="grid-column: 7 / 13; grid-row: 4; margin: 10px 0 40px; position: relative; z-index: 1">Verspilling zichtbaar maken met Lean en process mining, en structureel verbeteren zodat doelen weer aansluiten op missie en visie.</p>
+<div class="laag" data-t="w.c" style="grid-column: 9 / 13; grid-row: 5 / 7; align-self: start; justify-self: end; width: 100%; max-width: 380px; transform: {{w.c}}; z-index: 0">
+<img src="../assets/img/uurwerk.webp" alt="Tandwielen in een uurwerk" style="display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; filter: grayscale(1)">
+<p class="mono" style="margin: 6px 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em">Fig. 4 — Samenhang</p>
+</div>
+<h2 style="grid-column: 1 / 13; grid-row: 5; align-self: end; position: relative; z-index: 1; margin: 0; font-weight: 900; font-stretch: 75%; font-size: clamp(72px, 13cqw, 200px); line-height: 0.82; text-transform: uppercase; color: #5B2D91">Systems</h2>
+<p style="grid-column: 1 / 7; grid-row: 6; margin: 10px 0 0; position: relative; z-index: 1">Van ERP en CRM tot dataplatform en AI. Ontwerp, implementatie, testen en overdracht, met kennisdeling en training.</p>
+</div>
+</div>
+</section>
+
+<!-- OVER -->
+<section id="over" style="border-top: 2px solid #17121F; position: relative; background: #ECE7F3">
+<div class="m-grid m-over" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 48px; align-items: start">
+<div style="grid-column: 1 / 7; min-width: 0; position: relative">
+<div id="collage" style="position: relative; width: 100%; aspect-ratio: 1 / 1.12; overflow: hidden">
+<div class="ruit laag" data-t="h.ruit" style="position: absolute; inset: -6% 0 0 0; transform: {{h.ruit}}"></div>
+<div class="laag" data-t="h.blok" style="position: absolute; left: 14%; width: 62%; top: 21%; bottom: 0; background: {{accent}}; transform: {{h.blok}}"></div>
+<div class="laag" data-t="h.blok" style="position: absolute; left: -4%; right: -4%; top: 53%; height: 15%; background: #C9B3EA; transform: {{h.blok}}"></div>
+<p class="mono" style="position: absolute; top: 12px; right: 12px; margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; text-align: right; line-height: 1.4">Fig. 5<br>People, Process<br>&amp; Systems</p>
+<div class="laag" data-t="h.gatT" style="position: absolute; left: 27%; width: 32.6%; top: 25.2%; height: 5.4%; border-radius: 50%; background: radial-gradient(ellipse at 50% 35%, #3B2A4A 0%, #17121F 72%); box-shadow: inset 0 6px 10px rgba(0,0,0,0.6); transform: {{h.gatT}}"></div>
+<img src="../assets/img/prive/portret-hoofd.webp" alt="Michel Arents, oprichter van Sitau5D" style="position: absolute; left: 0; top: 13.4%; width: 100%; height: auto">
+<img class="laag" src="../assets/img/prive/portret-deksel.webp" alt="" data-t="h.deksel" style="position: absolute; left: 0; top: 13.4%; width: 100%; height: auto; transform-origin: 27% 15.3%; transform: {{h.deksel}}; filter: drop-shadow(0 10px 8px rgba(23,18,31,0.35))">
+<div style="position: absolute; left: 0; right: 0; top: 0; height: 28.4%; overflow: hidden">
+<img class="laag" src="../assets/img/prive/portret-mini.webp" alt="" data-t="h.mini" style="position: absolute; left: 34%; top: 100%; width: 19%; height: auto; transform: {{h.mini}}">
+</div>
+<img class="laag" src="../assets/img/berg-voorgrond.webp" alt="" data-t="h.berg" style="position: absolute; left: -6%; width: 115%; bottom: -6.25%; height: auto; transform: {{h.berg}}">
+<div class="korrel" style="position: absolute; inset: 0"></div>
+</div>
+<p class="mono" style="margin: 10px 0 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em">Fig. 5 — Van cijfers naar inzicht</p>
+</div>
+<div style="grid-column: 8 / 13; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; border-top: 2px solid #17121F; padding-top: 10px">04 / Over Michel</p>
+<h2 style="margin: 0; font-weight: 900; font-stretch: 78%; font-size: clamp(44px, 5cqw, 72px); line-height: 0.92; text-transform: uppercase">De brug tussen business en data</h2>
+<p style="margin: 0">Michel Arents begon in 1998 in de financiële administratie, via PwC. Daarna werkte hij jarenlang aan ERP-, CRM- en BI-systemen bij Van Doorne en Heerema Marine Contractors, waar hij procesverbetering en digitale transformatie in finance leidde.</p>
+<p style="margin: 0">Sinds 2015 werkt hij zelfstandig vanuit Sitau5D. Zijn focus verschoof naar data: datamodellen, pipelines en dashboards voor onder meer UWV, CAK en ABN AMRO, en de laatste jaren ook AI-toepassingen met LLM's en knowledge graphs.</p>
+<p style="margin: 0">Hij is eerlijk, betrokken en neemt verantwoordelijkheid. Door zijn aanpassingsvermogen legt hij makkelijk contact in alle lagen van een organisatie.</p>
+<div style="padding: 18px 20px; background: rgba(132, 69, 153, 0.12); display: flex; flex-direction: column; gap: 6px; margin-top: 8px">
+<p class="mono" style="margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: {{accent}}">Waarom Sitau5D?</p>
+<p style="margin: 0; font-size: 15px">Sitau is Kantonees voor 'baas', tau is in het Chinees de basis voor zelfontplooiing, en 5D klinkt in het Kantonees als faai di: 'schiet op'.</p>
+</div>
+<div class="mono" style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px">
+<sc-for list="{{skills}}" as="s" hint-placeholder-count="12">
+<span style="border: 1px solid #17121F; padding: 5px 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em">{{s}}</span>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OPDRACHTGEVERS (typografisch) -->
+<section style="background: #2A1B45; color: #EFEAE1; position: relative; overflow: hidden">
+<div class="laag" aria-hidden="true" style="position: absolute; left: -60px; bottom: -110px; width: 220px; aspect-ratio: 1 / 1; border-radius: 50%; background: #5B2D91"></div>
+<div class="m-weg" aria-hidden="true" style="position: absolute; right: 7%; top: 50%; width: 30px; height: 26px; background: #844599; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: rotate(-16deg)"></div>
+<div style="position: relative; max-width: 1200px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 32px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-bottom: 2px solid #EFEAE1; padding-bottom: 10px">
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em">05 / Gewerkt voor</p>
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em">1998 — 2026</p>
+</div>
+<p style="margin: 0; text-wrap: balance; font-weight: 800; font-stretch: 80%; font-size: clamp(26px, 3.7cqw, 52px); line-height: 1.12; text-transform: uppercase">
+<sc-for list="{{klanten}}" as="k" hint-placeholder-count="12">
+<span style="color: {{k.kleur}}; white-space: nowrap; margin-right: 18px; display: inline-block">{{k.naam}}<span style="color: #844599; font-weight: 400; padding-left: 18px">/</span></span> 
+</sc-for>
+</p>
+</div>
+</section>
+
+<!-- CITAAT: MIXED MEDIA -->
+<section id="citaat" class="spinband" style="position: relative; overflow: hidden">
+<div class="laag" style="position: absolute; inset: 0; background: {{accent}}; mix-blend-mode: multiply; opacity: 0.55"></div>
+<div class="korrel" style="position: absolute; inset: 0"></div>
+<div class="m-grid" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 140px 24px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px">
+<figure class="laag ruit" data-t="c.papier" style="grid-column: 4 / 13; margin: 0; padding: 36px 40px; box-shadow: 8px 8px 0 #17121F; transform: {{c.papier}}">
+<blockquote style="margin: 0; text-wrap: balance; font-weight: 800; font-stretch: 85%; font-size: clamp(24px, 2.5cqw, 34px); line-height: 1.12; text-transform: uppercase">“Leiderschap is een kwestie van intelligentie, betrouwbaarheid, menselijkheid, moed en standvastigheid.”</blockquote>
+<figcaption class="mono" style="margin-top: 18px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em">— Sun Tzu, De kunst van het oorlogvoeren</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="position: relative; overflow: hidden">
+<div class="laag" aria-hidden="true" data-t="v.co" style="position: absolute; right: -100px; top: 40px; width: 380px; aspect-ratio: 1 / 1; border-radius: 50%; background: #E4DAF2; transform: {{v.co}}"></div>
+<div class="laag" aria-hidden="true" data-t="v.co2" style="position: absolute; left: max(2px, calc(50% - 734px)); top: 56%; width: 26px; height: 22px; background: #5B2D91; clip-path: polygon(50% 0, 100% 100%, 0 100%); transform: {{v.co2}}"></div>
+<div class="m-grid m-contact" style="position: relative; max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 48px; align-items: start">
+<div style="grid-column: 1 / 6; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<p class="mono" style="margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; border-top: 2px solid #17121F; padding-top: 10px">06 / Contact</p>
+<h2 style="margin: 0; font-weight: 900; font-stretch: 78%; font-size: clamp(48px, 6cqw, 88px); line-height: 0.9; text-transform: uppercase">Zullen we kennis&shy;maken?</h2>
+<p style="margin: 0">Op zoek naar iemand die finance en data allebei begrijpt? Stuur een bericht, dan plannen we een kennismaking.</p>
+<div style="display: flex; flex-direction: column; border-top: 2px solid #17121F">
+<a href="mailto:info@sitau5d.nl" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #17121F; text-decoration: none; font-weight: 700; font-size: 20px; min-height: 44px"><span>info@sitau5d.nl</span><span class="mono" style="font-size: 12px; text-transform: uppercase">E-mail →</span></a>
+<a href="https://www.linkedin.com/in/michelarents/" target="_blank" rel="noopener" style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 0; border-bottom: 1px solid #17121F; text-decoration: none; font-weight: 700; font-size: 20px; min-height: 44px"><span>Michel Arents</span><span class="mono" style="font-size: 12px; text-transform: uppercase">LinkedIn →</span></a>
+</div>
+</div>
+<form name="contact" method="POST" action="/bedankt/" data-netlify="true" netlify-honeypot="bot-field" class="m-form" style="grid-column: 7 / 13; min-width: 0; background: {{accent}}; color: #FFFFFF; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-sizing: border-box">
+<input type="hidden" name="form-name" value="contact">
+<p style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; margin: 0"><label>Niet invullen: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px">
+<label class="mono" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Naam<input type="text" name="naam" autocomplete="name" required style="font: 400 17px Archivo, sans-serif; padding: 12px 14px; border: 2px solid #17121F; border-radius: 0; background: #FFFFFF; color: #17121F; min-height: 48px; box-sizing: border-box"></label>
+<label class="mono" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">E-mail<input type="email" name="email" autocomplete="email" required style="font: 400 17px Archivo, sans-serif; padding: 12px 14px; border: 2px solid #17121F; border-radius: 0; background: #FFFFFF; color: #17121F; min-height: 48px; box-sizing: border-box"></label>
+</div>
+<label class="mono" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Organisatie (optioneel)<input type="text" name="organisatie" autocomplete="organization" style="font: 400 17px Archivo, sans-serif; padding: 12px 14px; border: 2px solid #17121F; border-radius: 0; background: #FFFFFF; color: #17121F; min-height: 48px; box-sizing: border-box"></label>
+<label class="mono" style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">Bericht<textarea name="bericht" rows="5" required style="font: 400 17px Archivo, sans-serif; padding: 12px 14px; border: 2px solid #17121F; border-radius: 0; background: #FFFFFF; color: #17121F; resize: vertical"></textarea></label>
+<button type="submit" style="align-self: flex-start; font: 800 16px Archivo, sans-serif; text-transform: uppercase; letter-spacing: 0.04em; background: #17121F; color: #FFFFFF; border: 0; border-radius: 0; padding: 0 28px; min-height: 52px; cursor: pointer">Verstuur bericht →</button>
+</form>
+</div>
+</section>
+
+<!-- VOET -->
+<footer style="border-top: 2px solid #17121F">
+<div class="mono m-voet" style="max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 24px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em">
+<span>© 2026 Sitau5D</span>
+<span>KVK 63547473</span>
+<span>Btw NL001604146B45</span>
+<a href="https://codulo.nl" target="_blank" rel="noopener" style="text-decoration: none">Website door Codulo ↗</a>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#844599","options":["#844599","#6A3BA8","#17121F","#C2410C"]},"rust":{"editor":"range","default":0.12,"min":0,"max":1,"step":0.05,"section":"Animatie"},"$preview":{"width":390,"height":11000}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { hp: 0, wp: 0.5, op: 0.5, cp: 0.5 };
+    this.tick = this.tick.bind(this);
+    this.onScroll = this.onScroll.bind(this);
+    this.raf = 0;
+  }
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    window.addEventListener('scroll', this.onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', this.onScroll, { passive: true });
+    this.tick();
+    this.onNav = this.onNav.bind(this);
+    document.addEventListener('click', this.onNav);
+    this.setupReveal();
+    // content (lists, rows) can be drawn after mounting: mark those blocks too
+    this.rvTimers = [150, 600, 1500].map((ms) => setTimeout(() => this.setupReveal(), ms));
+  }
+  // smooth scroll to the section when a menu (or any in-page) link is clicked
+  onNav(e) {
+    const a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+    if (this.state.menuOpen) this.setState({ menuOpen: false });
+    const id = a.getAttribute('href').slice(1);
+    const el = id && document.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    el.scrollIntoView({ behavior: this.reduce ? 'auto' : 'smooth', block: 'start' });
+    try { history.replaceState(null, '', '#' + id); } catch (_) {}
+  }
+  // fade + slide blocks in as they enter the screen (hero excluded: it has its own animation)
+  setupReveal() {
+    if (this.reduce || !('IntersectionObserver' in window)) return;
+    const picks = [];
+    document.querySelectorAll('section:not(#top)').forEach((sec) => {
+      sec.querySelectorAll(':scope > div:not(.laag):not(.korrel), :scope > div:not(.laag):not(.korrel) > div:not(.laag)').forEach((wrap) => {
+        Array.from(wrap.children).forEach((el, i) => {
+          if (el.hasAttribute('data-t') || el.getAttribute('aria-hidden') === 'true') return;
+          const pos = getComputedStyle(el).position;
+          if (pos === 'absolute' || pos === 'fixed') return;
+          el.style.setProperty('--rv-d', (Math.min(i, 5) * 0.08).toFixed(2) + 's');
+          picks.push(el);
+        });
+      });
+    });
+    // rows of a table or list animate one by one
+    document.querySelectorAll('[data-rv-group]').forEach((g) => {
+      Array.from(g.children).forEach((el, i) => {
+        if (el.tagName === 'SC-FOR' || el.tagName === 'TEMPLATE') return;
+        el.style.setProperty('--rv-d', (Math.min(i, 6) * 0.07).toFixed(2) + 's');
+        picks.push(el);
+      });
+    });
+    // keep the innermost blocks only, so nothing animates twice
+    const final = picks.filter((el) => !picks.some((o) => o !== el && el.contains(o)));
+    if (!this.io) this.io = new IntersectionObserver((entries) => {
+      for (const en of entries) if (en.isIntersecting) { en.target.setAttribute('data-rv', 'in'); this.io.unobserve(en.target); }
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    // only blocks not marked yet: safe to run again when the page re-renders its content
+    for (const el of final) {
+      if (el.hasAttribute('data-rv')) continue;
+      el.setAttribute('data-rv', '');
+      this.io.observe(el);
+    }
+  }
+  componentDidUpdate() { this.setupReveal(); }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll, { capture: true });
+    window.removeEventListener('resize', this.onScroll);
+    if (this.raf) cancelAnimationFrame(this.raf);
+    if (this.onNav) document.removeEventListener('click', this.onNav);
+    if (this.io) this.io.disconnect();
+    (this.rvTimers || []).forEach(clearTimeout);
+  }
+  onScroll() {
+    if (this.raf) return;
+    this.raf = requestAnimationFrame(this.tick);
+  }
+  // 0 when the element's top hits the viewport bottom, 1 when its bottom leaves the top
+  prog(id) {
+    const el = document.getElementById(id);
+    if (!el) return 0.5;
+    const r = el.getBoundingClientRect();
+    const vh = window.innerHeight || 800;
+    const p = (vh - r.top) / (vh + r.height);
+    return Math.max(0, Math.min(1, p));
+  }
+  tick() {
+    this.raf = 0;
+    if (this.reduce) { this.apply({ hp: 0.6, wp: 0.5, op: 0.5, cp: 0.5, gp: 0, sp: 0.5, dp: 0.5, kp: 0.5 }); return; }
+    const hero = document.getElementById('collage');
+    let hp = 0;
+    if (hero) {
+      const r = hero.getBoundingClientRect();
+      const vh = window.innerHeight || 800;
+      // the hero sits at the top of the page: animate over the first ~60% of a screen of scrolling,
+      // so the whole opening happens while the collage is still in view
+      // start once the head is at 75% of the screen height, finish after half a screen more
+      const se = document.scrollingElement || document.documentElement;
+      const y = Math.max(window.scrollY || 0, se.scrollTop || 0);
+      const head0 = r.top + y + r.height * 0.28;
+      const start = Math.max(0, head0 - vh * 0.75);
+      hp = Math.max(0, Math.min(1, (y - start) / (Math.max(vh, 500) * 0.5)));
+    }
+    this.apply({ hp, wp: this.prog('werkwijze'), op: this.prog('over'), cp: this.prog('citaat'),
+      gp: Math.max(0, Math.min(1, (window.scrollY || (document.scrollingElement || document.documentElement).scrollTop || 0) / (window.innerHeight || 800))),
+      sp: this.prog('statement'), dp: this.prog('diensten'), kp: this.prog('contact') });
+  }
+  // write transforms straight to the DOM: no re-render per scroll frame
+  apply(st) {
+    this.live = st;
+    const v = this.calc(st);
+    if (!this.nodes || !this.nodes.length || !this.nodes[0].isConnected) this.nodes = Array.from(document.querySelectorAll('[data-t]'));
+    for (const el of this.nodes) {
+      const [a, b] = el.dataset.t.split('.');
+      const t = v[a] && v[a][b];
+      if (t && el.__t !== t) { el.style.transform = t; el.__t = t; }
+    }
+  }
+  smal() { const r = document.querySelector('[data-root]'); return (r ? r.offsetWidth : window.innerWidth) < 760; }
+  renderVals() {
+    const open = !!this.state.menuOpen;
+    return Object.assign(this.calc(this.live || this.state), {
+      menuCls: open ? 'open' : '',
+      menuExpanded: open ? 'true' : 'false',
+      menuLabel: open ? 'Sluiten' : 'Menu',
+      menuOpen: open, menuClosed: !open,
+      toggleMenu: () => this.setState({ menuOpen: !open })
+    });
+  }
+  calc(st) {
+    const rust = this.props.rust ?? 0.12;
+    const q = rust + (1 - rust) * st.hp;           // hero: rest pose + scroll
+    const ease = (t) => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); };
+    const lid = ease(q / 0.65);                              // lid opens first
+    const up = ease((q - 0.25) / 0.7);                    // starts hidden, rises once the lid is open // mini Michel climbs steadily from deep inside
+    const w = (st.wp - 0.5) * 2 * (this.smal() ? 0.35 : 1);                    // -1..1 around centre
+    const o = (st.op - 0.5) * 2;
+    const c = (st.cp - 0.5) * 2;
+    const g0 = (st.gp || 0) * (this.smal() ? 0.5 : 1);
+    const T = (x, y, r) => 'translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px)' + (r ? ' rotate(' + r.toFixed(2) + 'deg)' : '');
+    const sp = ((st.sp ?? 0.5) - 0.5) * 2, dp = ((st.dp ?? 0.5) - 0.5) * 2, kp = ((st.kp ?? 0.5) - 0.5) * 2;
+    return {
+      g: {
+        zon: T(0, g0 * -90), ring: T(g0 * -30, g0 * 70), half: T(g0 * 50, 0), blok: T(g0 * -40, 0),
+        punten: T(0, g0 * -40), michel: T(0, g0 * 30), lijn: 'rotate(' + (28 + g0 * 5).toFixed(2) + 'deg)',
+        vk: T(g0 * 20, g0 * -50), ster1: T(0, g0 * -140, g0 * 90), ster2: T(0, g0 * -70, g0 * -60)
+      },
+      v: {
+        st: T(0, sp * 60), st2: T(sp * -30, sp * -40),
+        di: T(0, dp * -70), di2: T(0, dp * 50), di3: T(dp * 14, dp * 36),
+        co: T(0, kp * -60), co2: T(0, kp * -90, kp * 120)
+      },
+      accent: this.props.accent ?? '#844599',
+      h: {
+        ruit: 'translateY(' + (q * 4).toFixed(2) + '%)',
+        blok: 'translateY(' + (q * -3).toFixed(2) + '%)',
+        mini: 'translateY(' + (-(up * 42)).toFixed(2) + '%)',   // stops with head and shoulders above the rim
+        deksel: 'translate(' + (-lid * 1.5).toFixed(2) + '%, ' + (-lid * 4).toFixed(2) + '%) rotate(' + (-lid * 42).toFixed(2) + 'deg)',
+        gatT: 'rotate(3deg) scale(' + (0.6 + 0.4 * lid).toFixed(3) + ')',
+        berg: 'translateY(' + ((1 - q) * 22).toFixed(2) + '%)'
+      },
+      w: {
+        a: 'translateY(' + (w * -60).toFixed(1) + 'px)',
+        b: 'translateY(' + (w * 90).toFixed(1) + 'px)',
+        c: 'translateY(' + (w * -130).toFixed(1) + 'px)',
+        zon: T(0, w * 90), lijn: 'translateY(' + (w * -110).toFixed(1) + 'px) rotate(' + (-14 + w * 6).toFixed(2) + 'deg)', ster: T(0, w * -120, w * 180)
+      },
+      o: {
+        blok: 'translateY(' + (o * 30).toFixed(1) + 'px)',
+        michel: 'translateY(' + (o * -24).toFixed(1) + 'px)'
+      },
+      c: { papier: 'translateY(' + (c * -50).toFixed(1) + 'px) rotate(' + (-1.5 + c).toFixed(2) + 'deg)' },
+      werk: [
+        { jaar: '2024 – heden', klant: 'ABN AMRO', rol: 'Data Engineer', wat: 'Wijzigingen in IRB-kredietrisicomodellen voor hypotheken: datasourcing, modelresultaten en monitoring. Verbeteren van processen met GitHub Copilot.' },
+        { jaar: '2023 – heden', klant: 'Burggraaf & Hoekstra', rol: 'Finance, Analytics & Reporting', wat: 'Volledige boekhouding, maand- en jaarafsluiting, btw en Power BI-rapportage met Twinfield/Kleos-koppeling.' },
+        { jaar: '2023 – 2024', klant: 'Rabobank', rol: 'Lead Data Scientist', wat: "LLM-zoekmachine die klantafspraken uit juridische PDF's haalt, op Azure en Databricks." },
+        { jaar: '2023 – 2024', klant: 'ANWB', rol: 'Asset Management Specialist', wat: 'Automatisering van maandafsluiting, rapportages en controls; risicodashboards.' },
+        { jaar: '2022', klant: 'Heineken', rol: 'Analytics & Reporting', wat: 'Nieuwe bronnen in data lake en cubes, datamodellen en functioneel ontwerp.' },
+        { jaar: '2015 – 2021', klant: 'UWV', rol: 'BI Developer / Data Analist', wat: 'Datamodellen en stuurinformatie in SAP Business Objects; transformatie naar SQL Server-pipeline.' }
+      ],
+      klanten: [
+        { naam: 'ABN AMRO', kleur: '#EFEAE1' }, { naam: 'Burggraaf & Hoekstra', kleur: '#C9A6DB' }, { naam: 'Rabobank', kleur: '#EFEAE1' },
+        { naam: 'ANWB', kleur: '#C9A6DB' }, { naam: 'Heineken', kleur: '#EFEAE1' }, { naam: 'UWV', kleur: '#C9A6DB' },
+        { naam: 'CAK', kleur: '#EFEAE1' }, { naam: 'Heerema', kleur: '#C9A6DB' }, { naam: 'Van Doorne', kleur: '#EFEAE1' }, { naam: 'PwC', kleur: '#C9A6DB' }
+      ],
+      skills: ['Azure', 'Databricks', 'Python / PySpark', 'SQL', 'Power BI', 'SAP FICO / BW', 'AFAS', 'Twinfield', 'Neo4j', 'LLM / RAG', 'Erwin', 'Lean']
+    };
+  }
+}
+</script>
+</body>
+</html>

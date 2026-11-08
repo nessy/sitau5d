@@ -1,0 +1,15 @@
+# Statische site: geen build, Netlify publiceert de map public/ zoals hij is.
+[build]
+  publish = "public"
+  command = ""
+
+# Oude of foutieve paden zonder slash netjes doorsturen
+[[redirects]]
+  from = "/bedankt"
+  to = "/bedankt/"
+  status = 301
+
+[[redirects]]
+  from = "/privacy"
+  to = "/privacy/"
+  status = 301

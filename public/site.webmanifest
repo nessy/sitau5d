@@ -1,0 +1,11 @@
+{
+  "name": "Sitau5D",
+  "short_name": "Sitau5D",
+  "icons": [
+    { "src": "/img/favicon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/img/favicon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#EFEAE1",
+  "background_color": "#EFEAE1",
+  "display": "browser"
+}

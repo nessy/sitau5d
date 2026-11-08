@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /img/prive/
+
+Sitemap: https://sitau5d.nl/sitemap.xml
