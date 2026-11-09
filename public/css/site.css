@@ -29,7 +29,7 @@
 }
 
 /* ---------- Basis ---------- */
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html{scroll-behavior:smooth;scroll-padding-top:72px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;background:var(--creme);color:var(--inkt);font-family:var(--sans);font-size:17px;line-height:1.55;overflow-x:hidden}
 img{max-width:none}
 a{color:var(--inkt)}
@@ -69,7 +69,8 @@ ul.kaal{list-style:none;margin:0;padding:0}
 .knop--rand:hover{background:var(--inkt);color:var(--creme)}
 
 /* ---------- Kopbalk ---------- */
-.kopbalk{border-bottom:2px solid var(--inkt);background:var(--creme)}
+/* Kopbalk blijft bovenaan staan tijdens het scrollen */
+.kopbalk{position:sticky;top:0;z-index:10;border-bottom:2px solid var(--inkt);background:var(--creme)}
 .nav{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
 .nav__logo{display:flex;align-items:center;min-height:44px}
 .nav__logo img{height:34px;width:auto;display:block;mix-blend-mode:multiply}
@@ -102,7 +103,17 @@ ul.kaal{list-style:none;margin:0;padding:0}
 .poster__fig{position:absolute;left:12%;bottom:14px;margin:0;color:var(--lila)}
 
 .hero__kop{grid-column:1/11;grid-row:2;position:relative;z-index:2;margin:96px 0 0;font-weight:900;font-stretch:78%;font-size:clamp(64px,9.4vw,140px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase}
-.hero__kop span{background:var(--accent);color:var(--wit);padding:0 .08em}
+.hero__accent{background:var(--accent);color:var(--wit);padding:0 .08em}
+/* Verschijnanimatie kop: regels schuiven één voor één omhoog bij het laden (puur CSS, werkt ook zonder JS) */
+.hero__regel{display:block;animation:kop-in .9s var(--ease) both}
+.hero__regel + .hero__regel{animation-delay:.14s}
+@keyframes kop-in{from{opacity:0;transform:translateY(.35em)}to{opacity:1;transform:none}}
+/* Daarna volgen introtekst, feiten en knoppen, elk ~0,1 s later */
+.hero__intro > *{animation:intro-in .8s var(--ease) both}
+.hero__intro > :nth-child(1){animation-delay:.26s}
+.hero__intro > :nth-child(2){animation-delay:.36s}
+.hero__intro > :nth-child(3){animation-delay:.46s}
+@keyframes intro-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .hero__intro{grid-column:1/6;grid-row:3;position:relative;z-index:2;display:flex;flex-direction:column;gap:28px;padding:40px 0 64px}
 .lead{margin:0;font-size:20px;line-height:1.45;max-width:460px}
 .feiten{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--inkt)}
@@ -246,9 +257,8 @@ ul.kaal{list-style:none;margin:0;padding:0}
 /* ---------- Voet ---------- */
 .voet{border-top:2px solid var(--inkt)}
 .voet__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px 24px;padding-top:20px;padding-bottom:20px;font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
-.voet__grid a{text-decoration:none}
+.voet__grid a{text-decoration:underline;text-underline-offset:2px}
 .voet__grid > :last-child{justify-self:end;text-align:right}
-.voet__grid a.voet__privacy{text-decoration:underline;text-underline-offset:2px}
 
 /* ---------- Subpagina's (bedankt, privacy, 404) ---------- */
 .pagina{position:relative;overflow:hidden}
@@ -313,7 +323,8 @@ ul.kaal{list-style:none;margin:0;padding:0}
   .grid12{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px}
   .grid12 > *{grid-column:1/-1;grid-row:auto}
 
-  .poster{order:3;min-height:480px;margin-top:8px}
+  /* Hoogte schaalt mee met de breedte (de foto doet dat ook), anders valt het hoofd op bredere telefoons weg */
+  .poster{order:3;min-height:480px;aspect-ratio:4/5;margin-top:8px}
   .poster__michel{left:8%;width:92%}
   .hero__kop{margin-top:0;font-size:80px}
 
@@ -363,5 +374,6 @@ ul.kaal{list-style:none;margin:0;padding:0}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   [data-rv]{opacity:1;transform:none;transition:none}
+  .hero__regel,.hero__intro > *{animation:none}
   .js .menu,.js .menu > a{transition:none}
 }

@@ -46,6 +46,7 @@ python3 -m http.server 8000 -d public
   ```
   De CSP staat geen inline `style="…"` toe: gebruik klassen in `site.css`.
 - **Header en footer** staan in alle vier de HTML-bestanden; wijzig ze overal.
+- **Sticky kopbalk**: `.kopbalk` blijft bovenaan staan. `scroll-padding-top` op `html` (72 px = kopbalkhoogte zonder de 2 px onderrand) zorgt dat ankers precies onder de kopbalk uitkomen; secties met een eigen bovenrand vallen zo samen met de rand van de kopbalk. Wordt de kopbalk hoger, pas die waarde dan mee aan.
 - **Portretten** horen in `public/img/prive/`, met neutrale bestandsnamen. Gebruik ze nooit als `og:image` of in JSON-LD.
 - **Social preview** opnieuw maken: serveer de repo-root (`python3 -m http.server 8766`), en
   ```sh
@@ -58,5 +59,6 @@ python3 -m http.server 8000 -d public
 
 - Parallax: elementen met `data-t="groep.naam"` krijgen een transform uit `calc()` in `site.js` (zelfde formules als het ontwerp). Op mobiel gedempt; werkwijze-foto's staan daar stil.
 - Inlaadanimatie: blokken in elke sectie behalve de hero (IntersectionObserver); `[data-rv-group]` = rijen één voor één.
-- `prefers-reduced-motion`: geen parallax, geen reveal, geen smooth scroll; de collage toont de rustpositie.
+- Hero-kop: de regels (`.hero__regel`) schuiven bij het laden één voor één omhoog (CSS-keyframes `kop-in`); daarna volgen introtekst, feiten en knoppen (`intro-in`).
+- `prefers-reduced-motion`: geen parallax, geen reveal, geen kop-animatie, geen smooth scroll; de collage toont de rustpositie.
 - Zonder JavaScript is alles zichtbaar en staat het mobiele menu open.
